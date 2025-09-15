@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EliteShop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i data-lucide="shield-check"></i>
+                <span>EliteShop Admin</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="admin-dashboard.html" class="nav-item active">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-products.html" class="nav-item">
+                <i data-lucide="package"></i>
+                <span>Products</span>
+            </a>
+            <a href="admin-orders.html" class="nav-item">
+                <i data-lucide="shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="admin-messages.html" class="nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Messages</span>
+            </a>
+            <a href="admin-users.html" class="nav-item">
+                <i data-lucide="users"></i>
+                <span>Users</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1>Dashboard Overview</h1>
+            </div>
+            <div class="top-bar-right">
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <i data-lucide="user"></i>
+                    </div>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card blue">
+                    <div class="stat-icon">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-products">0</h3>
+                        <p>Total Products</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card green">
+                    <div class="stat-icon">
+                        <i data-lucide="shopping-cart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-orders">0</h3>
+                        <p>Total Orders</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card purple">
+                    <div class="stat-icon">
+                        <i data-lucide="message-square"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-messages">0</h3>
+                        <p>New Messages</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card orange">
+                    <div class="stat-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-users">0</h3>
+                        <p>Registered Users</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="admin-products.html" class="action-card">
+                        <i data-lucide="plus"></i>
+                        <div>
+                            <h3>Add Product</h3>
+                            <p>Add new product to inventory</p>
+                        </div>
+                    </a>
+                    <a href="admin-orders.html" class="action-card">
+                        <i data-lucide="truck"></i>
+                        <div>
+                            <h3>Process Orders</h3>
+                            <p>Manage pending orders</p>
+                        </div>
+                    </a>
+                    <a href="admin-messages.html" class="action-card">
+                        <i data-lucide="mail"></i>
+                        <div>
+                            <h3>Check Messages</h3>
+                            <p>Review customer inquiries</p>
+                        </div>
+                    </a>
+                    <a href="admin-users.html" class="action-card">
+                        <i data-lucide="user-plus"></i>
+                        <div>
+                            <h3>Manage Users</h3>
+                            <p>View user accounts</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="recent-section">
+                <div class="section-header">
+                    <h2>Recent Orders</h2>
+                    <a href="admin-orders.html" class="view-all-btn">View All</a>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-orders">
+                            <!-- Recent orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Low Stock Alert -->
+            <div class="alert-section">
+                <div class="section-header">
+                    <h2>Stock Alerts</h2>
+                    <a href="admin-products.html" class="view-all-btn">Manage Stock</a>
+                </div>
+                <div id="stock-alerts">
+                    <!-- Stock alerts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="admin-data.js"></script>
+    <script src="admin-dashboard.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

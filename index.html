@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteShop - Premium E-commerce Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" onclick="showPage('home')">EliteShop</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="nav-menu" id="nav-menu">
+                <a href="#" class="nav-link active" onclick="showPage('home')" data-page="home">Home</a>
+                <a href="#" class="nav-link" onclick="showPage('products')" data-page="products">Products</a>
+                <a href="#" class="nav-link" onclick="showPage('services')" data-page="services">Services</a>
+                <a href="#" class="nav-link" onclick="showPage('contact')" data-page="contact">Contact</a>
+            </div>
+
+            <!-- Right Side Icons -->
+            <div class="nav-actions">
+                <!-- Cart -->
+                <a href="#" class="cart-icon" onclick="showPage('cart')">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+
+                <!-- User Menu -->
+                <div class="user-menu" id="user-menu">
+                    <a href="#" class="login-btn" id="login-btn" onclick="showPage('login')">Login</a>
+                    <div class="user-info" id="user-info" style="display: none;">
+                        <a href="#" class="user-link" onclick="showPage('account')">
+                            <i data-lucide="user"></i>
+                            <span id="user-name"></span>
+                        </a>
+                        <button class="logout-btn" onclick="logout()">)
+                            <i data-lucide="log-out"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('products')">Products</a>
+            <a href="#" onclick="showPage('services')">Services</a>
+            <a href="#" onclick="showPage('contact')">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <div class="page" id="home-page">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Elite Shopping
+                        <span class="hero-subtitle">Experience</span>
+                    </h1>
+                    <p class="hero-description">
+                        Discover premium products with unmatched quality and service
+                    </p>
+                    <button class="hero-btn" onclick="showPage('products')">
+                        Shop Now
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="scroll-dot"></div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="featured-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Featured Products</h2>
+                        <p>Handpicked selections for the discerning customer</p>
+                    </div>
+                    <div class="featured-grid" id="featured-products">
+                        <!-- Featured products will be loaded here -->
+                    </div>
+                    <div class="section-footer">
+                        <button class="btn-primary" onclick="showPage('products')">
+                            View All Products
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Why Choose EliteShop?</h2>
+                        <p>We're committed to providing exceptional service</p>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon blue">
+                                <i data-lucide="truck"></i>
+                            </div>
+                            <h3>Fast Delivery</h3>
+                            <p>Free shipping on orders over $50. Express delivery available.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon green">
+                                <i data-lucide="shield"></i>
+                            </div>
+                            <h3>Secure Checkout</h3>
+                            <p>Your payment information is protected with bank-level security.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon purple">
+                                <i data-lucide="heart-handshake"></i>
+                            </div>
+                            <h3>Customer Support</h3>
+                            <p>24/7 customer support to help with any questions or concerns.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container">
+                    <h2>Ready to Start Shopping?</h2>
+                    <p>Join thousands of satisfied customers who trust EliteShop</p>
+                    <div class="cta-buttons">
+                        <button class="btn-white" onclick="showPage('products')">Browse Products</button>
+                        <button class="btn-outline" onclick="showPage('contact')">Contact Us</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Products Page -->
+        <div class="page" id="products-page" style="display: none;">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Our Products</h1>
+                    <p>Discover our carefully curated selection</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-card">
+                    <div class="filters-row">
+                        <div class="search-box">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="product-search" placeholder="Search products...">
+                        </div>
+                        <div class="filter-group">
+                            <i data-lucide="filter"></i>
+                            <select id="category-filter">
+                                <option value="all">All Categories</option>
+                            </select>
+                        </div>
+                        <div class="sort-group">
+                            <select id="sort-products">
+                                <option value="name">Sort by Name</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div class="page" id="cart-page" style="display: none;">
+            <div class="container">
+                <h1>Shopping Cart</h1>
+                <div class="cart-content" id="cart-content">
+                    <!-- Cart items will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Page -->
+        <div class="page" id="checkout-page" style="display: none;">
+            <div class="container">
+                <h1>Checkout</h1>
+                <div class="checkout-grid">
+                    <!-- Order Summary -->
+                    <div class="checkout-card">
+                        <h2>Order Summary</h2>
+                        <div id="checkout-items"></div>
+                        <div class="checkout-total">
+                            <span>Total:</span>
+                            <span id="checkout-total">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Form -->
+                    <div class="checkout-card">
+                        <h2>Shipping Information</h2>
+                        <form id="checkout-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="customer-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="customer-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="customer-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" id="customer-address" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" id="customer-postal" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Method</label>
+                                <div class="payment-methods">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="cash" checked>
+                                        <i data-lucide="truck"></i>
+                                        Cash on Delivery
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="card">
+                                        <i data-lucide="credit-card"></i>
+                                        Credit/Debit Card
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary full-width">
+                                Place Order
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Success Page -->
+        <div class="page" id="order-success-page" style="display: none;">
+            <div class="container">
+                <div class="success-card">
+                    <div class="success-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h1>Order Confirmed!</h1>
+                    <p>Thank you for your purchase</p>
+                    <div class="order-info">
+                        <div class="order-id">
+                            <i data-lucide="package"></i>
+                            <span>Order ID: <span id="success-order-id"></span></span>
+                        </div>
+                        <p>You will receive an email confirmation shortly. Your order will be processed and shipped within 1-2 business days.</p>
+                    </div>
+                    <div class="success-actions">
+                        <button class="btn-primary" onclick="showPage('account')">
+                            <i data-lucide="package"></i>
+                            View Orders
+                        </button>
+                        <button class="btn-outline" onclick="showPage('home')">
+                            <i data-lucide="home"></i>
+                            Back to Home
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="page" id="contact-page" style="display: none;">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Contact Us</h1>
+                    <p>We'd love to hear from you. Get in touch!</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon blue">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>info@eliteshop.com</p>
+                                    <p>support@eliteshop.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon blue">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div>
+                                    <h3>Phone</h3>
+                                    <p>+1 (555) 123-4567</p>
+                                    <p>Mon-Fri: 9AM-6PM EST</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon blue">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div>
+                                    <h3>Address</h3>
+                                    <p>123 Commerce Street</p>
+                                    <p>New York, NY 10001</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="business-hours">
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Saturday: 10:00 AM - 4:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="contact-form-card">
+                        <h2>Send us a Message</h2>
+                        <div id="contact-success" class="success-message" style="display: none;">
+                            <p>Thank you for your message! We'll get back to you soon.</p>
+                        </div>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" id="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="contact-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea id="contact-message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary full-width">
+                                <i data-lucide="send"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Page -->
+        <div class="page" id="services-page" style="display: none;">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Our Services</h1>
+                    <p>We're committed to providing exceptional service and support to ensure your shopping experience is seamless and enjoyable.</p>
+                </div>
+
+                <div class="services-detailed-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-icon blue">
+                            <i data-lucide="truck"></i>
+                        </div>
+                        <h3>Free Shipping</h3>
+                        <p>Free shipping on orders over $50. Fast and reliable delivery to your doorstep.</p>
+                        <ul>
+                            <li>Orders over $50</li>
+                            <li>Express delivery available</li>
+                            <li>Track your package</li>
+                        </ul>
+                    </div>
+                    <div class="service-detailed-card">
+                        <div class="service-icon green">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <h3>Secure Payment</h3>
+                        <p>Your payment information is protected with bank-level security encryption.</p>
+                        <ul>
+                            <li>SSL encryption</li>
+                            <li>Multiple payment options</li>
+                            <li>Fraud protection</li>
+                        </ul>
+                    </div>
+                    <div class="service-detailed-card">
+                        <div class="service-icon purple">
+                            <i data-lucide="refresh-cw"></i>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>Not satisfied? Return your items within 30 days for a full refund.</p>
+                        <ul>
+                            <li>30-day return policy</li>
+                            <li>Free return shipping</li>
+                            <li>Quick refund process</li>
+                        </ul>
+                    </div>
+                    <div class="service-detailed-card">
+                        <div class="service-icon red">
+                            <i data-lucide="heart-handshake"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Our customer support team is available around the clock to help you.</p>
+                        <ul>
+                            <li>Live chat support</li>
+                            <li>Email support</li>
+                            <li>Phone support</li>
+                        </ul>
+                    </div>
+                    <div class="service-detailed-card">
+                        <div class="service-icon yellow">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <h3>Quality Guarantee</h3>
+                        <p>We stand behind our products with a comprehensive quality guarantee.</p>
+                        <ul>
+                            <li>Quality assurance</li>
+                            <li>Warranty protection</li>
+                            <li>Authentic products only</li>
+                        </ul>
+                    </div>
+                    <div class="service-detailed-card">
+                        <div class="service-icon indigo">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <h3>Fast Processing</h3>
+                        <p>Orders are processed quickly and efficiently to get your items to you faster.</p>
+                        <ul>
+                            <li>Same-day processing</li>
+                            <li>Priority handling</li>
+                            <li>Real-time updates</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="services-cta">
+                    <h2>Need Help?</h2>
+                    <p>Our customer service team is here to assist you with any questions or concerns.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:support@eliteshop.com" class="btn-white">Email Support</a>
+                        <a href="tel:+15551234567" class="btn-outline">Call Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div class="page" id="login-page" style="display: none;">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-header">
+                        <h2 id="login-title">Sign in to your account</h2>
+                        <p>
+                            <span id="login-switch-text">Don't have an account?</span>
+                            <button id="login-switch-btn" class="link-btn">Sign up</button>
+                        </p>
+                    </div>
+
+                    <div id="login-error" class="error-message" style="display: none;"></div>
+
+                    <form id="login-form">
+                        <div class="form-group" id="name-group" style="display: none;">
+                            <label>Full Name</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="user"></i>
+                                <input type="text" id="register-name" placeholder="Enter your full name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="mail"></i>
+                                <input type="email" id="login-email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="lock"></i>
+                                <input type="password" id="login-password" placeholder="Enter your password" required>
+                                <button type="button" class="password-toggle" id="password-toggle">
+                                    <i data-lucide="eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary full-width" id="login-submit">
+                            Sign In
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Page -->
+        <div class="page" id="account-page" style="display: none;">
+            <div class="container">
+                <div class="account-card">
+                    <!-- Header -->
+                    <div class="account-header">
+                        <div class="account-avatar">
+                            <i data-lucide="user"></i>
+                        </div>
+                        <div class="account-info">
+                            <h1 id="account-name">Welcome</h1>
+                            <p id="account-email"></p>
+                        </div>
+                    </div>
+
+                    <!-- Account Actions -->
+                    <div class="account-section">
+                        <h2>Account Actions</h2>
+                        <div class="account-actions">
+                            <button class="btn-secondary" onclick="logout()">
+                                <i data-lucide="log-out"></i>
+                                Logout
+                            </button>
+                            <button class="btn-danger" onclick="deleteAccount()">
+                                <i data-lucide="trash-2"></i>
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Order History -->
+                    <div class="account-section">
+                        <h2>
+                            <i data-lucide="package"></i>
+                            Order History
+                        </h2>
+                        <div id="user-orders">
+                            <!-- Orders will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Login Page -->
+        <div class="page" id="admin-login-page" style="display: none;">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="admin-login-header">
+                        <div class="admin-icon">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <h2>Admin Login</h2>
+                        <p>Access the admin dashboard</p>
+                    </div>
+
+                    <div id="admin-login-error" class="error-message" style="display: none;"></div>
+
+                    <form id="admin-login-form">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="mail"></i>
+                                <input type="email" id="admin-email" placeholder="admin@eliteshop.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="lock"></i>
+                                <input type="password" id="admin-password" placeholder="Enter admin password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary full-width">
+                            Login to Admin Panel
+                        </button>
+                    </form>
+
+                    <div class="demo-credentials">
+                        <p>Demo credentials: admin@eliteshop.com / admin123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div class="page" id="admin-dashboard-page" style="display: none;">
+            <!-- Admin Header -->
+            <div class="admin-header">
+                <div class="admin-header-content">
+                    <div class="admin-title">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h1>Admin Dashboard</h1>
+                    </div>
+                    <button class="btn-danger" onclick="adminLogout()">
+                        <i data-lucide="log-out"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin-container">
+                <!-- Stats Cards -->
+                <div class="admin-stats">
+                    <div class="stat-card blue">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p>Total Products</p>
+                                <h3 id="total-products">0</h3>
+                            </div>
+                            <div class="stat-icon">
+                                <i data-lucide="package"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p>Total Orders</p>
+                                <h3 id="total-orders">0</h3>
+                            </div>
+                            <div class="stat-icon">
+                                <i data-lucide="shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p>Messages</p>
+                                <h3 id="total-messages">0</h3>
+                            </div>
+                            <div class="stat-icon">
+                                <i data-lucide="message-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p>Users</p>
+                                <h3 id="total-users">0</h3>
+                            </div>
+                            <div class="stat-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="admin-actions">
+                    <div class="action-card" onclick="showAdminPage('products')">
+                        <i data-lucide="package"></i>
+                        <div>
+                            <h3>Products</h3>
+                            <p>Manage inventory</p>
+                        </div>
+                    </div>
+                    <div class="action-card" onclick="showAdminPage('orders')">
+                        <i data-lucide="shopping-cart"></i>
+                        <div>
+                            <h3>Orders</h3>
+                            <p>Process orders</p>
+                        </div>
+                    </div>
+                    <div class="action-card" onclick="showAdminPage('messages')">
+                        <i data-lucide="message-square"></i>
+                        <div>
+                            <h3>Messages</h3>
+                            <p>Customer inquiries</p>
+                        </div>
+                    </div>
+                    <div class="action-card" onclick="showAdminPage('users')">
+                        <i data-lucide="users"></i>
+                        <div>
+                            <h3>Users</h3>
+                            <p>Manage users</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="admin-section">
+                    <h2>Recent Orders</h2>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-orders">
+                                <!-- Recent orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Products Page -->
+        <div class="page" id="admin-products-page" style="display: none;">
+            <div class="admin-header">
+                <div class="admin-header-content">
+                    <div class="admin-title">
+                        <button class="back-btn" onclick="showAdminPage('dashboard')">
+                            <i data-lucide="arrow-left"></i>
+                        </button>
+                        <h1>Product Management</h1>
+                    </div>
+                    <button class="btn-primary" onclick="showAddProductModal()">
+                        <i data-lucide="plus"></i>
+                        Add Product
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin-container">
+                <!-- Filters -->
+                <div class="admin-filters">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="admin-product-search" placeholder="Search products...">
+                    </div>
+                    <div class="filter-group">
+                        <i data-lucide="filter"></i>
+                        <select id="admin-category-filter">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-products-table">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Orders Page -->
+        <div class="page" id="admin-orders-page" style="display: none;">
+            <div class="admin-header">
+                <div class="admin-header-content">
+                    <div class="admin-title">
+                        <button class="back-btn" onclick="showAdminPage('dashboard')">
+                            <i data-lucide="arrow-left"></i>
+                        </button>
+                        <h1>Order Management</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-container">
+                <!-- Filters -->
+                <div class="admin-filters">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="admin-order-search" placeholder="Search orders...">
+                    </div>
+                    <select id="admin-status-filter">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="fulfilled">Fulfilled</option>
+                    </select>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-table">
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Messages Page -->
+        <div class="page" id="admin-messages-page" style="display: none;">
+            <div class="admin-header">
+                <div class="admin-header-content">
+                    <div class="admin-title">
+                        <button class="back-btn" onclick="showAdminPage('dashboard')">
+                            <i data-lucide="arrow-left"></i>
+                        </button>
+                        <h1>Message Management</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-container">
+                <!-- Search -->
+                <div class="admin-filters">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="admin-message-search" placeholder="Search messages...">
+                    </div>
+                </div>
+
+                <!-- Messages -->
+                <div id="admin-messages-list">
+                    <!-- Messages will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Users Page -->
+        <div class="page" id="admin-users-page" style="display: none;">
+            <div class="admin-header">
+                <div class="admin-header-content">
+                    <div class="admin-title">
+                        <button class="back-btn" onclick="showAdminPage('dashboard')">
+                            <i data-lucide="arrow-left"></i>
+                        </button>
+                        <h1>User Management</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-container">
+                <!-- Search -->
+                <div class="admin-filters">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="admin-user-search" placeholder="Search users...">
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Orders</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users-table">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EliteShop</h3>
+                <p>Your premier destination for quality products and exceptional service.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('products')">Products</a></li>
+                    <li><a href="#" onclick="showPage('services')">Services</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>123 Commerce St, City, State 12345</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@eliteshop.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get updates on new products and exclusive offers.</p>
+                <form id="newsletter-form">
+                    <input type="email" id="newsletter-email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div id="newsletter-success" class="newsletter-success" style="display: none;">
+                    <p>Thanks for subscribing! 🎉</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 EliteShop. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="product-modal-title">Add New Product</h2>
+                <button class="modal-close" onclick="closeProductModal()">×</button>
+            </div>
+            <form id="product-form">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" id="product-price" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="product-category">
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home</option>
+                        <option value="books">Books</option>
+                        <option value="sports">Sports</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="product-image" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="product-description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="product-stock" checked>
+                        In Stock
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Save Product</button>
+                    <button type="button" class="btn-secondary" onclick="closeProductModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="order-modal-title">Order Details</h2>
+                <button class="modal-close" onclick="closeOrderModal()">×</button>
+            </div>
+            <div id="order-modal-content">
+                <!-- Order details will be loaded here -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeOrderModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

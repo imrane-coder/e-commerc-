@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - EliteShop Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i data-lucide="shield-check"></i>
+                <span>EliteShop Admin</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="admin-dashboard.html" class="nav-item">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-products.html" class="nav-item">
+                <i data-lucide="package"></i>
+                <span>Products</span>
+            </a>
+            <a href="admin-orders.html" class="nav-item">
+                <i data-lucide="shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="admin-messages.html" class="nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Messages</span>
+            </a>
+            <a href="admin-users.html" class="nav-item active">
+                <i data-lucide="users"></i>
+                <span>Users</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1>User Management</h1>
+            </div>
+            <div class="top-bar-right">
+                <button class="btn-secondary" onclick="exportUsers()">
+                    <i data-lucide="download"></i>
+                    Export CSV
+                </button>
+            </div>
+        </header>
+
+        <!-- Users Content -->
+        <div class="dashboard-content">
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="user-search" placeholder="Search users...">
+                </div>
+                <div class="filter-group">
+                    <select id="sort-filter">
+                        <option value="name">Sort by Name</option>
+                        <option value="email">Sort by Email</option>
+                        <option value="orders">Sort by Orders</option>
+                        <option value="date">Sort by Join Date</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Orders</th>
+                            <th>Total Spent</th>
+                            <th>Join Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table">
+                        <!-- Users will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- User Details Modal -->
+    <div class="modal" id="user-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="user-modal-title">User Details</h2>
+                <button class="modal-close" onclick="closeUserModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div id="user-details">
+                <!-- User details will be loaded here -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeUserModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-data.js"></script>
+    <script src="admin-users.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

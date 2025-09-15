@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - EliteShop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="admin-logo">
+                    <i data-lucide="shield-check"></i>
+                    <h1>EliteShop Admin</h1>
+                </div>
+                <p>Secure Admin Dashboard Access</p>
+            </div>
+
+            <div id="login-error" class="error-message" style="display: none;"></div>
+
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-email">Email Address</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="admin-email" placeholder="admin@shop.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="lock"></i>
+                        <input type="password" id="admin-password" placeholder="Enter password" required>
+                        <button type="button" class="password-toggle" id="password-toggle">
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary full-width">
+                    <i data-lucide="log-in"></i>
+                    Access Dashboard
+                </button>
+            </form>
+
+            <div class="demo-credentials">
+                <p><strong>Demo Credentials:</strong></p>
+                <p>Email: admin@shop.com</p>
+                <p>Password: admin123</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-auth.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
